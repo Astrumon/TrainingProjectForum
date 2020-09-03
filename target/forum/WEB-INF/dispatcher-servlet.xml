@@ -5,6 +5,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/data/jpa https://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
+    <context:property-placeholder location="file:resources/database.properties"/>
     <mvc:annotation-driven/>
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
@@ -12,11 +13,11 @@
 
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="username" value="postgres"/>
-        <property name="password" value="4461"/>
-        <property name="driverClassName" value="org.postgresql.Driver"/>
-        <property name="url" value="jdbc:postgresql://localhost:4000/forum"/>
-        <property name="schema" value="public"/>
+        <property name="username" value="${database.Username}"/>
+        <property name="password" value="${database.Password}"/>
+        <property name="driverClassName" value="${database.DriverClassName}"/>
+        <property name="url" value="${database.url}"/>
+        <property name="schema" value="${database.schema}"/>
     </bean>
 
 
