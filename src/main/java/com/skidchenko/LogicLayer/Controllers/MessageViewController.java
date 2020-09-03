@@ -28,9 +28,9 @@ public class MessageViewController {
         MessageViewForm form = new MessageViewForm();
         model.addAttribute("messageViewForm", form);
         System.out.println("модель добавлена");
-        ModelAndView modelAndView = new ModelAndView("MessagesPage", "model", model);
+        ModelAndView modelAndView = new ModelAndView("MessagesShow", "model", model);
         System.out.println(modelAndView.getModel().get("model"));
-        return new ModelAndView("MessagesPage");
+        return new ModelAndView("MessagesShow");
     }
 
 
@@ -38,7 +38,7 @@ public class MessageViewController {
     public ModelAndView showUsersMessages(
             @ModelAttribute("messageViewForm") MessageViewForm messageViewForm) {
         System.out.println(messageViewForm);
-        ModelAndView modelAndView = new ModelAndView("MessagesPage");
+        ModelAndView modelAndView = new ModelAndView("MessagesShow");
         if (messageViewForm != null) {
             List<Message> messages = new ArrayList<>();
             String userName = "";

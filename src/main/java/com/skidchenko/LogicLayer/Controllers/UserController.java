@@ -29,7 +29,7 @@ public class UserController  {
             System.out.println(user);
         }
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("UserRegisterPage");
+        modelAndView.setViewName("UserRegister");
         modelAndView.addObject("UsersFromServer", users);
         System.out.println(users);
         return modelAndView;
