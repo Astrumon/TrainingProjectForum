@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
   User: still
@@ -52,8 +51,8 @@
             <div>
         <td>
 
-            <h2>From: ${message.userId}</h2>
-            <h2>To: ${message.sendToId}</h2>
+            <h2>From: ${message.from}</h2>
+            <h2>To: ${message.to}</h2>
             <p><strong>${message.title}</strong></p>
             <br>
             <h3>${message.message}</h3>

@@ -52,8 +52,8 @@
             <div>
         <td>
 
-            <h2>From: ${message.userId}</h2>
-            <h2>To: ${message.sendToId}</h2>
+            <h2>From: ${message.from}</h2>
+            <h2>To: ${message.to}</h2>
             <p><strong>${message.title}</strong></p>
             <br>
             <h3>${message.message}</h3>

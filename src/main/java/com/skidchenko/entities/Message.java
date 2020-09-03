@@ -43,6 +43,12 @@ public class Message implements Serializable {
     @JoinColumn(name = "send_To_Id",insertable = false,updatable = false)
     private User sendTo;
 
+    @Transient
+    String from;
+
+    @Transient
+    String to;
+
 //    @ManyToOne
 //    @JoinColumns({
 //            @JoinColumn(name = "user_id", referencedColumnName = "id"),

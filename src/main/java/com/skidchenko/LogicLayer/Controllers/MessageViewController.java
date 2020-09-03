@@ -42,26 +42,38 @@ public class MessageViewController {
         if (messageViewForm != null) {
             List<Message> messages = new ArrayList<>();
             String userName = "";
+            String userNameFrom = "";
+            String userNameTo = "";
             switch (messageViewForm.getMessageType()) {
                 case ("ALL"):
                     messages = messagesRepository.findAllByUserId(messageViewForm.getUserId());
                     messages.addAll(messagesRepository.findAllBySendToId(messageViewForm.getUserId()));
-                    userName = usersRepository.findAllById(messageViewForm.getUserId()).getNickname();
-                    break;
+                    for (Message message: messages
+                    ) {
+                        message.setTo(usersRepository.findAllById(message.getUserId()).getNickname());
+                        message.setFrom(usersRepository.findAllById(message.getSendToId()).getNickname());
+                    }
                 case ("SENT"):
                     messages = messagesRepository.findAllByUserId(messageViewForm.getUserId());
-                    userName = usersRepository.findAllById(messageViewForm.getUserId()).getNickname();
+                    for (Message message: messages
+                    ) {
+                        message.setTo(usersRepository.findAllById(message.getUserId()).getNickname());
+                        message.setFrom(usersRepository.findAllById(message.getSendToId()).getNickname());
+                    }
                     break;
                 case ("RECEIVED"):
                     messages = messagesRepository.findAllBySendToId(messageViewForm.getUserId());
-                    userName = usersRepository.findAllById(messageViewForm.getUserId()).getNickname();
+                    for (Message message: messages
+                         ) {
+                        message.setTo(usersRepository.findAllById(message.getUserId()).getNickname());
+                        message.setFrom(usersRepository.findAllById(message.getSendToId()).getNickname());
+                    }
                     break;
             }
             System.out.println("!!!" + messages);
             modelAndView.addObject("messages", messages);
             modelAndView.addObject("messagesType", messageViewForm.getMessageType());
             modelAndView.addObject("userName", userName);
-
         }
 
         return modelAndView;
